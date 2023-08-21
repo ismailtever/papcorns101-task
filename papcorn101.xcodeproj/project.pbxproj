@@ -101,14 +101,12 @@
 		D98C4C9A2A93A49200AAEBC2 /* papcorn101 */ = {
 			isa = PBXGroup;
 			children = (
-				D98C4C9B2A93A49200AAEBC2 /* AppDelegate.swift */,
-				D98C4C9D2A93A49200AAEBC2 /* SceneDelegate.swift */,
-				D98C4C9F2A93A49200AAEBC2 /* ViewController.swift */,
-				D98C4CA12A93A49200AAEBC2 /* Main.storyboard */,
-				D98C4CA72A93A49500AAEBC2 /* Assets.xcassets */,
-				D98C4CA92A93A49500AAEBC2 /* LaunchScreen.storyboard */,
-				D98C4CAC2A93A49500AAEBC2 /* Info.plist */,
-				D98C4CA42A93A49200AAEBC2 /* papcorn101.xcdatamodeld */,
+				D98C4CD42A93A59200AAEBC2 /* NetworkService */,
+				D98C4CD32A93A58C00AAEBC2 /* View */,
+				D98C4CD12A93A57500AAEBC2 /* Model */,
+				D98C4CD02A93A57000AAEBC2 /* App */,
+				D98C4CCF2A93A55B00AAEBC2 /* Resources */,
+				D98C4CCE2A93A54000AAEBC2 /* Support */,
 			);
 			path = papcorn101;
 			sourceTree = "<group>";
@@ -128,6 +126,56 @@
 				D98C4CC12A93A49500AAEBC2 /* papcorn101UITestsLaunchTests.swift */,
 			);
 			path = papcorn101UITests;
+			sourceTree = "<group>";
+		};
+		D98C4CCE2A93A54000AAEBC2 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				D98C4CAC2A93A49500AAEBC2 /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		D98C4CCF2A93A55B00AAEBC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D98C4CA72A93A49500AAEBC2 /* Assets.xcassets */,
+				D98C4CA92A93A49500AAEBC2 /* LaunchScreen.storyboard */,
+				D98C4CA42A93A49200AAEBC2 /* papcorn101.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D98C4CD02A93A57000AAEBC2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D98C4C9B2A93A49200AAEBC2 /* AppDelegate.swift */,
+				D98C4C9D2A93A49200AAEBC2 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D98C4CD12A93A57500AAEBC2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D98C4CD32A93A58C00AAEBC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D98C4C9F2A93A49200AAEBC2 /* ViewController.swift */,
+				D98C4CA12A93A49200AAEBC2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D98C4CD42A93A59200AAEBC2 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,7 +491,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G639H868D6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = papcorn101/Info.plist;
+				INFOPLIST_FILE = papcorn101/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -471,7 +519,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G639H868D6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = papcorn101/Info.plist;
+				INFOPLIST_FILE = papcorn101/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
