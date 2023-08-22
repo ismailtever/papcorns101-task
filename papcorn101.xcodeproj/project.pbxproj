@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D984C2622A94B1E4004E98D6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D984C2612A94B1E4004E98D6 /* SnapKit */; };
+		D984C2662A94E6E4004E98D6 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984C2652A94E6E4004E98D6 /* CustomCell.swift */; };
 		D98C4C9C2A93A49200AAEBC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98C4C9B2A93A49200AAEBC2 /* AppDelegate.swift */; };
 		D98C4C9E2A93A49200AAEBC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98C4C9D2A93A49200AAEBC2 /* SceneDelegate.swift */; };
-		D98C4CA02A93A49200AAEBC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98C4C9F2A93A49200AAEBC2 /* ViewController.swift */; };
-		D98C4CA32A93A49200AAEBC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98C4CA12A93A49200AAEBC2 /* Main.storyboard */; };
+		D98C4CA02A93A49200AAEBC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98C4C9F2A93A49200AAEBC2 /* HomeViewController.swift */; };
 		D98C4CA62A93A49200AAEBC2 /* papcorn101.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D98C4CA42A93A49200AAEBC2 /* papcorn101.xcdatamodeld */; };
 		D98C4CA82A93A49500AAEBC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D98C4CA72A93A49500AAEBC2 /* Assets.xcassets */; };
 		D98C4CAB2A93A49500AAEBC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D98C4CA92A93A49500AAEBC2 /* LaunchScreen.storyboard */; };
@@ -39,11 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D984C2652A94E6E4004E98D6 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D98C4C982A93A49200AAEBC2 /* papcorn101.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = papcorn101.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98C4C9B2A93A49200AAEBC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D98C4C9D2A93A49200AAEBC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D98C4C9F2A93A49200AAEBC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D98C4CA22A93A49200AAEBC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D98C4C9F2A93A49200AAEBC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D98C4CA52A93A49200AAEBC2 /* papcorn101.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = papcorn101.xcdatamodel; sourceTree = "<group>"; };
 		D98C4CA72A93A49500AAEBC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D98C4CAA2A93A49500AAEBC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D984C2622A94B1E4004E98D6 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +173,8 @@
 		D98C4CD32A93A58C00AAEBC2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D98C4C9F2A93A49200AAEBC2 /* ViewController.swift */,
-				D98C4CA12A93A49200AAEBC2 /* Main.storyboard */,
+				D98C4C9F2A93A49200AAEBC2 /* HomeViewController.swift */,
+				D984C2652A94E6E4004E98D6 /* CustomCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +202,9 @@
 			dependencies = (
 			);
 			name = papcorn101;
+			packageProductDependencies = (
+				D984C2612A94B1E4004E98D6 /* SnapKit */,
+			);
 			productName = papcorn101;
 			productReference = D98C4C982A93A49200AAEBC2 /* papcorn101.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +277,9 @@
 				Base,
 			);
 			mainGroup = D98C4C8F2A93A49200AAEBC2;
+			packageReferences = (
+				D984C2602A94B1E4004E98D6 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = D98C4C992A93A49200AAEBC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -290,7 +298,6 @@
 			files = (
 				D98C4CAB2A93A49500AAEBC2 /* LaunchScreen.storyboard in Resources */,
 				D98C4CA82A93A49500AAEBC2 /* Assets.xcassets in Resources */,
-				D98C4CA32A93A49200AAEBC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,10 +323,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98C4CA62A93A49200AAEBC2 /* papcorn101.xcdatamodeld in Sources */,
-				D98C4CA02A93A49200AAEBC2 /* ViewController.swift in Sources */,
+				D98C4CA02A93A49200AAEBC2 /* HomeViewController.swift in Sources */,
 				D98C4C9C2A93A49200AAEBC2 /* AppDelegate.swift in Sources */,
 				D98C4CD62A93A7AF00AAEBC2 /* UserInfo.swift in Sources */,
 				D98C4CD82A93A9B200AAEBC2 /* MovieInfo.swift in Sources */,
+				D984C2662A94E6E4004E98D6 /* CustomCell.swift in Sources */,
 				D98C4C9E2A93A49200AAEBC2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,14 +365,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D98C4CA12A93A49200AAEBC2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D98C4CA22A93A49200AAEBC2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D98C4CA92A93A49500AAEBC2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -502,7 +502,6 @@
 				INFOPLIST_FILE = papcorn101/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -530,7 +529,6 @@
 				INFOPLIST_FILE = papcorn101/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,6 +660,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D984C2602A94B1E4004E98D6 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D984C2612A94B1E4004E98D6 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D984C2602A94B1E4004E98D6 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D98C4CA42A93A49200AAEBC2 /* papcorn101.xcdatamodeld */ = {
