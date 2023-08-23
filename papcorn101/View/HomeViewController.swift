@@ -94,7 +94,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         recommendedCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle1.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle1)
-            make.height.greaterThanOrEqualTo(300)
+            make.height.greaterThanOrEqualTo(250)
         }
     }
     private func makePopularMovieCollectionView() {
@@ -104,7 +104,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         popularCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle2.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle2)
-            make.height.greaterThanOrEqualTo(300)
+            make.height.greaterThanOrEqualTo(250)
 
         }
     }
