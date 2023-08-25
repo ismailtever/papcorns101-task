@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+class RecommendedCVCell: UICollectionViewCell {
     
     static let identifier = "CustomCVCell"
     var movies = [MovieInfo]()
@@ -16,7 +16,7 @@ class CustomCell: UICollectionViewCell {
 
     let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "photo") //resim url sini araştır.
+        imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .yellow
         imageView.clipsToBounds = true
@@ -63,9 +63,7 @@ class CustomCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = CGRect(x: 0, y:-30, width: 150, height: 250)
-//        contentView.snp.makeConstraints { make in
-//            make.top.equalTo()
-//        }
+        
         imageView.frame = CGRect(x: 5,
                                  y: 0,
                                  width: contentView.frame.size.width-10,
