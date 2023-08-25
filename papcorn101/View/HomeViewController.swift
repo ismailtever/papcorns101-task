@@ -8,33 +8,43 @@
 import UIKit
 import Foundation
 import SnapKit
+import Alamofire
 
 class HomeViewController: UIViewController {
+    var movies = [MovieInfo]()
 
     private let labelTitle1: UILabel = UILabel()
     private let labelTitle2: UILabel = UILabel()
-    private let recommendedCollectionView: UICollectionView = {
+    private let recommendedViewButton: UIButton = UIButton()
+    private let popularViewButton: UIButton = UIButton()
+    let recommendedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        cv.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
         return cv
     }()
-    private let popularCollectionView: UICollectionView = {
+    let popularCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        Webservice.shared.fetchingAPIData { apiData in
+            self.movies = apiData
+            DispatchQueue.main.async {
+                self.recommendedCollectionView.reloadData()
+            }
+        }
         
     }
-    
+
     func configure() {
         view.addSubview(labelTitle1)
         view.addSubview(recommendedCollectionView)
@@ -45,8 +55,8 @@ class HomeViewController: UIViewController {
         
         makeRecommendedLabel()
         makeRecommendedMovieCollectionView()
-        makePopularLabel()
-        makePopularMovieCollectionView()
+//        makePopularLabel()
+//        makePopularMovieCollectionView()
     }
 
 }
@@ -58,12 +68,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else {return UICollectionViewCell()}
+        cell.layer.cornerRadius = 25
+        if movies.count > 0 {
+            let movieData = movies[indexPath.row]
+            Webservice.shared.fetchImages(with: movieData.movieImage) { data in
+                cell.imageView.image = UIImage(data: data)
+            }
+            cell.movieLabel.text = movieData.movieTitle
+            cell.movieType.text = movieData.movieGenre
+            cell.movieYear.text = String(describing: movieData.movieYear!)
+
+        }
         return cell
     }
     
@@ -90,7 +110,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     private func makeRecommendedMovieCollectionView() {
         recommendedCollectionView.delegate = self
         recommendedCollectionView.dataSource = self
-        recommendedCollectionView.backgroundColor = .blue
+        recommendedCollectionView.backgroundColor = .gray
         recommendedCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle1.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle1)
@@ -100,7 +120,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     private func makePopularMovieCollectionView() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
-        popularCollectionView.backgroundColor = .blue
+        popularCollectionView.backgroundColor = .gray
         popularCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle2.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle2)
