@@ -20,18 +20,18 @@ class HomeViewController: UIViewController {
     let recommendedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CustomCell.self, forCellWithReuseIdentifier: CustomCell.identifier)
-        return cv
+        let cv1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv1.translatesAutoresizingMaskIntoConstraints = false
+        cv1.register(RecommendedCVCell.self, forCellWithReuseIdentifier: RecommendedCVCell.identifier)
+        return cv1
     }()
     let popularCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.register(CustomCell.self, forCellWithReuseIdentifier: "cell")
-        return cv
+        let cv2 = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv2.translatesAutoresizingMaskIntoConstraints = false
+        cv2.register(PopularCVCell.self, forCellWithReuseIdentifier: PopularCVCell.identifier)
+        return cv2
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,12 @@ class HomeViewController: UIViewController {
                 self.recommendedCollectionView.reloadData()
             }
         }
-        
+        Webservice.shared.fetchingAPIData { apiData in
+            self.movies = apiData
+            DispatchQueue.main.async {
+                self.popularCollectionView.reloadData()
+            }
+        }
     }
 
     func configure() {
@@ -55,8 +60,8 @@ class HomeViewController: UIViewController {
         
         makeRecommendedLabel()
         makeRecommendedMovieCollectionView()
-//        makePopularLabel()
-//        makePopularMovieCollectionView()
+        makePopularLabel()
+        makePopularMovieCollectionView()
     }
 
 }
@@ -66,25 +71,38 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell else {return UICollectionViewCell()}
-        cell.layer.cornerRadius = 25
-        if movies.count > 0 {
-            let movieData = movies[indexPath.row]
-            Webservice.shared.fetchImages(with: movieData.movieImage) { data in
-                cell.imageView.image = UIImage(data: data)
+        if collectionView == self.recommendedCollectionView {
+            let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedCVCell.identifier, for: indexPath) as! RecommendedCVCell
+            cellA.layer.cornerRadius = 25
+            if movies.count > 0 {
+                let movieData = movies[indexPath.row]
+                Webservice.shared.fetchImages(with: movieData.movieImage) { data in
+                    cellA.imageView.image = UIImage(data: data)
+                }
+            cellA.movieLabel.text = movieData.movieTitle
+            cellA.movieType.text = movieData.movieGenre
+            cellA.movieYear.text = String(describing: movieData.movieYear!)
             }
-            cell.movieLabel.text = movieData.movieTitle
-            cell.movieType.text = movieData.movieGenre
-            cell.movieYear.text = String(describing: movieData.movieYear!)
-
+            return cellA
+        } else  {
+            let cellB = collectionView.dequeueReusableCell(withReuseIdentifier: PopularCVCell.identifier, for: indexPath ) as! PopularCVCell
+            cellB.layer.cornerRadius = 25
+            if movies.count > 0 {
+                let movieData = movies[indexPath.row]
+                Webservice.shared.fetchImages(with: movieData.movieImage) { data in
+                    cellB.pImageView.image = UIImage(data: data)
+                    }
+                cellB.pMovieLabel.text = movieData.movieTitle
+                cellB.pMovieType.text = movieData.movieGenre
+                cellB.pMovieYear.text = String(describing: movieData.movieYear!)
+            }
+            return cellB
         }
-        return cell
     }
     
     private func makeRecommendedLabel() {
@@ -120,7 +138,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     private func makePopularMovieCollectionView() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
-        popularCollectionView.backgroundColor = .gray
+        popularCollectionView.backgroundColor = .systemYellow
         popularCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle2.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle2)
