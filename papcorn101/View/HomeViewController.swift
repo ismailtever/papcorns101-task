@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     private let labelTitle2: UILabel = UILabel()
     private let recommendedViewButton: UIButton = UIButton()
     private let popularViewButton: UIButton = UIButton()
-    let recommendedCollectionView: UICollectionView = {
+    private let recommendedCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv1 = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         cv1.register(RecommendedCVCell.self, forCellWithReuseIdentifier: RecommendedCVCell.identifier)
         return cv1
     }()
-    let popularCollectionView: UICollectionView = {
+    private let popularCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv2 = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -40,14 +40,11 @@ class HomeViewController: UIViewController {
             self.movies = apiData
             DispatchQueue.main.async {
                 self.recommendedCollectionView.reloadData()
-            }
-        }
-        Webservice.shared.fetchingAPIData { apiData in
-            self.movies = apiData
-            DispatchQueue.main.async {
                 self.popularCollectionView.reloadData()
+
             }
         }
+        
     }
 
     func configure() {
@@ -112,16 +109,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             make.right.equalTo(view).offset(-10)
             make.height.greaterThanOrEqualTo(10)
         }
-        labelTitle1.text = "Recomended Movie"
+        labelTitle1.text = "Recomended For You"
     }
     private func makePopularLabel() {
         labelTitle2.snp.makeConstraints { make in
-            make.top.equalTo(recommendedCollectionView.snp.bottom).offset(10)
+            make.top.equalTo(recommendedCollectionView.snp.bottom).offset(20)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
             make.height.greaterThanOrEqualTo(10)
         }
-        labelTitle2.text = "Popular Movie"
+        labelTitle2.text = "Popular"
 
     }
 

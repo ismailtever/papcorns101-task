@@ -26,23 +26,24 @@ class RecommendedCVCell: UICollectionViewCell {
     let movieLabel: UILabel = {
         let movieLabel = UILabel()
         movieLabel.backgroundColor = .green
-        movieLabel.textAlignment = .center
+        movieLabel.textAlignment = .left
+        movieLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return movieLabel
     }()
     let movieType: UILabel = {
         let movieType = UILabel()
         movieType.contentMode = .scaleAspectFit
-
+        movieType.font = UIFont.systemFont(ofSize: 15)
         movieType.backgroundColor = .cyan
-        movieType.textAlignment = .center
+        movieType.textAlignment = .left
         return movieType
     }()
     let movieYear: UILabel = {
         let movieYear = UILabel()
         movieYear.contentMode = .scaleAspectFit
-
+        movieYear.font = UIFont.systemFont(ofSize: 15)
         movieYear.backgroundColor = .systemBlue
-        movieYear.textAlignment = .center
+        movieYear.textAlignment = .left
         return movieYear
     }()
     
