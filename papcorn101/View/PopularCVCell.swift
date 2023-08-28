@@ -11,7 +11,6 @@ import UIKit
 class PopularCVCell: UICollectionViewCell {
     
     static let identifier = "PCustomCVCell"
-    var movies = [MovieInfo]()
     
     let pImageView: UIImageView = {
         let pImageView = UIImageView()
@@ -25,23 +24,24 @@ class PopularCVCell: UICollectionViewCell {
     let pMovieLabel: UILabel = {
         let pMovieLabel = UILabel()
         pMovieLabel.backgroundColor = .yellow
-        pMovieLabel.textAlignment = .center
+        pMovieLabel.textAlignment = .left
+        pMovieLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return pMovieLabel
     }()
     let pMovieType: UILabel = {
         let pMovieType = UILabel()
         pMovieType.contentMode = .scaleAspectFit
-
+        pMovieType.font = UIFont.systemFont(ofSize: 15)
         pMovieType.backgroundColor = .lightGray
-        pMovieType.textAlignment = .center
+        pMovieType.textAlignment = .left
         return pMovieType
     }()
     let pMovieYear: UILabel = {
         let pMovieYear = UILabel()
         pMovieYear.contentMode = .scaleAspectFit
-
+        pMovieYear.font = UIFont.systemFont(ofSize: 15)
         pMovieYear.backgroundColor = .magenta
-        pMovieYear.textAlignment = .center
+        pMovieYear.textAlignment = .left
         return pMovieYear
     }()
     
