@@ -28,6 +28,7 @@
 		D98C4CD82A93A9B200AAEBC2 /* MovieInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98C4CD72A93A9B200AAEBC2 /* MovieInfo.swift */; };
 		D9F657B12A98E1170026CCFB /* PopularCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F657B02A98E1170026CCFB /* PopularCVCell.swift */; };
 		D9F657B32A9C94E20026CCFB /* UserCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F657B22A9C94E10026CCFB /* UserCVCell.swift */; };
+		D9F657B52A9CF4730026CCFB /* PostTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F657B42A9CF4730026CCFB /* PostTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		D98C4CD72A93A9B200AAEBC2 /* MovieInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfo.swift; sourceTree = "<group>"; };
 		D9F657B02A98E1170026CCFB /* PopularCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCVCell.swift; sourceTree = "<group>"; };
 		D9F657B22A9C94E10026CCFB /* UserCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCVCell.swift; sourceTree = "<group>"; };
+		D9F657B42A9CF4730026CCFB /* PostTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTVCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				D9F657B02A98E1170026CCFB /* PopularCVCell.swift */,
 				D984C2652A94E6E4004E98D6 /* RecommendedCVCell.swift */,
 				D9F657B22A9C94E10026CCFB /* UserCVCell.swift */,
+				D9F657B42A9CF4730026CCFB /* PostTVCell.swift */,
 				D984C2672A94F95E004E98D6 /* SearchViewController.swift */,
 				D984C2692A94FA3E004E98D6 /* TabBarController.swift */,
 			);
@@ -359,6 +362,7 @@
 				D98C4C9C2A93A49200AAEBC2 /* AppDelegate.swift in Sources */,
 				D98C4CD62A93A7AF00AAEBC2 /* UserInfo.swift in Sources */,
 				D98C4CD82A93A9B200AAEBC2 /* MovieInfo.swift in Sources */,
+				D9F657B52A9CF4730026CCFB /* PostTVCell.swift in Sources */,
 				D984C2662A94E6E4004E98D6 /* RecommendedCVCell.swift in Sources */,
 				D98C4C9E2A93A49200AAEBC2 /* SceneDelegate.swift in Sources */,
 			);
