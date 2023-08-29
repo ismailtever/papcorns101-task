@@ -16,14 +16,12 @@ class PopularCVCell: UICollectionViewCell {
         let pImageView = UIImageView()
         pImageView.image = UIImage(systemName: "photo")
         pImageView.contentMode = .scaleAspectFill
-        pImageView.backgroundColor = .orange
         pImageView.clipsToBounds = true
         pImageView.layer.cornerRadius = 25
         return pImageView
     }()
     let pMovieLabel: UILabel = {
         let pMovieLabel = UILabel()
-        pMovieLabel.backgroundColor = .yellow
         pMovieLabel.textAlignment = .left
         pMovieLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return pMovieLabel
@@ -32,7 +30,6 @@ class PopularCVCell: UICollectionViewCell {
         let pMovieType = UILabel()
         pMovieType.contentMode = .scaleAspectFit
         pMovieType.font = UIFont.systemFont(ofSize: 15)
-        pMovieType.backgroundColor = .lightGray
         pMovieType.textAlignment = .left
         return pMovieType
     }()
@@ -40,22 +37,17 @@ class PopularCVCell: UICollectionViewCell {
         let pMovieYear = UILabel()
         pMovieYear.contentMode = .scaleAspectFit
         pMovieYear.font = UIFont.systemFont(ofSize: 15)
-        pMovieYear.backgroundColor = .magenta
         pMovieYear.textAlignment = .left
         return pMovieYear
     }()
-    
     override init(frame: CGRect) {
         super .init(frame: frame)
-        contentView.backgroundColor = .black
         contentView.addSubview(pImageView)
         contentView.addSubview(pMovieLabel)
         contentView.addSubview(pMovieType)
         contentView.addSubview(pMovieYear)
         contentView.clipsToBounds = true
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
