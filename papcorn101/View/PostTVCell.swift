@@ -8,29 +8,25 @@
 import UIKit
 
 class PostTVCell: UITableViewCell {
-
+//MARK: - Properties
     static let identifier = "PostTVCell"
     
     let userNameLabel: UILabel = {
         let userNameLabel = UILabel()
-        userNameLabel.backgroundColor = .red
         return userNameLabel
     }()
     let postCreatedTime: UILabel = {
         let postCreatedTime = UILabel()
-        postCreatedTime.backgroundColor = .green
         return postCreatedTime
     }()
     let postComment: UILabel = {
         let postComment = UILabel()
-        postComment.backgroundColor = .systemPink
         return postComment
     }()
     let postUserImageView: UIImageView = {
         let postUserImageView = UIImageView()
         postUserImageView.image = UIImage(systemName: "photo")
         postUserImageView.contentMode = .scaleAspectFill
-        postUserImageView.backgroundColor = .yellow
         postUserImageView.clipsToBounds = true
         postUserImageView.layer.masksToBounds = true
         return postUserImageView
@@ -39,16 +35,36 @@ class PostTVCell: UITableViewCell {
         let postImageView = UIImageView()
         postImageView.image = UIImage(systemName: "photo")
         postImageView.contentMode = .scaleAspectFill
-        postImageView.backgroundColor = .systemBrown
         postImageView.clipsToBounds = true
         postImageView.layer.masksToBounds = true
         return postImageView
     }()
-    let heartButton: UIButton = UIButton()
-    let commentButton: UIButton = UIButton()
+    let heartImage: UIImageView = {
+        let heartImage = UIImageView()
+        heartImage.image = UIImage(systemName: "heart")
+        heartImage.contentMode = .scaleAspectFill
+        heartImage.clipsToBounds = true
+        heartImage.layer.masksToBounds = true
+        return heartImage
+    }()
+    let heartLabel: UILabel = {
+        let heartLabel = UILabel()
+        return heartLabel
+    }()
+    let commentImage: UIImageView = {
+        let commentImage = UIImageView()
+        commentImage.image = UIImage(systemName: "message")
+        commentImage.contentMode = .scaleAspectFill
+        commentImage.clipsToBounds = true
+        commentImage.layer.masksToBounds = true
+        return commentImage
+    }()
+    let commentLabel: UILabel = {
+        let commentLabel = UILabel()
+        return commentLabel
+    }()
     let shareButton: UIButton = UIButton()
-    
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         config()
@@ -62,34 +78,26 @@ class PostTVCell: UITableViewCell {
         contentView.addSubview(postComment)
         contentView.addSubview(postUserImageView)
         contentView.addSubview(postImageView)
-        contentView.addSubview(heartButton)
-        contentView.addSubview(commentButton)
+        contentView.addSubview(heartImage)
+        contentView.addSubview(heartLabel)
+        contentView.addSubview(commentImage)
+        contentView.addSubview(commentLabel)
         contentView.addSubview(shareButton)
         contentView.clipsToBounds = true
     }
-
     override func layoutSubviews() {
-
-        contentView.backgroundColor = .green
-        contentView.frame = CGRect(x: 0, y:0, width:380 , height:450)
-//        userNameLabel.snp.makeConstraints { make in
-//            make.height.equalTo(150)
-////            make.top.equalTo(contentView.snp.bottom)
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//        }
+        contentView.frame = CGRect(x: 0, y:35, width:380 , height:450)
         postUserImageView.frame = CGRect(x: 5,
                                           y: 2,
                                          width: 50,
                                           height: 50)
         postUserImageView.layer.cornerRadius = postUserImageView.frame.size.width/2
-
         userNameLabel.frame = CGRect(x: 63,
                                  y: 5,
                                  width: 200,
                                  height: 20)
         postCreatedTime.frame = CGRect(x: 63,
-                                  y: 25,
+                                  y: 27,
                                   width: 200,
                                   height: 20)
         postComment.frame = CGRect(x: 5,
@@ -99,9 +107,12 @@ class PostTVCell: UITableViewCell {
         postImageView.frame = CGRect(x: 0,
                                   y: 85,
                                   width: 400,
-                                  height: 350)
+                                  height: 300)
+        heartImage.frame = CGRect(x: 15, y: 400, width: 30, height: 30)
+        heartLabel.frame = CGRect(x: 50, y: 400, width: 30, height: 30)
+        commentImage.frame = CGRect(x: 170, y: 400, width: 30, height: 30)
+        commentLabel.frame = CGRect(x: 205, y: 400, width: 30, height: 30)
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

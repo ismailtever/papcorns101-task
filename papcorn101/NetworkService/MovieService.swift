@@ -16,7 +16,6 @@ class Webservice {
     var movie = [MovieInfo]()
     var user = [UserInfo]()
 
-    
     func fetchingAPIData(handler: @escaping (_ apiData:[MovieInfo]) -> (Void)) {
         let url = "http://www.mocky.io/v2/5dea8d843000001d442b09da"
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).response { response in

@@ -18,7 +18,6 @@ class TabBarController: UITabBarController {
     }
     // MARK: - Tab setup
     private func setupTabs() {
-        
         let home = self.createNav(title: "Movies", image: UIImage(systemName: "house"), vc: HomeViewController())
         let search = self.createNav(title: "Discover", image: UIImage(systemName: "magnifyingglass.circle"), vc: SearchViewController())
         self.setViewControllers([home, search], animated: true)
@@ -29,9 +28,7 @@ class TabBarController: UITabBarController {
         nav.navigationBar.topItem?.largeTitleDisplayMode = .always
         nav.tabBarItem.title = title
         nav.tabBarItem.image = image
-         // your color
         nav.viewControllers.first?.navigationItem.title = title
-//        nav.viewControllers.first?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Button", style: .plain, target: nil, action: nil)
         return nav
     }
 }

@@ -9,10 +9,17 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    //MARK: - Properties
     var users = [UserInfo]()
-
+    
     private let labelTitle3: UILabel = UILabel()
-    private let viewButton: UIButton = UIButton()
+    private let archiveButton: UIButton = {
+        let archiveButton = UIButton()
+        archiveButton.setTitle("View Archive", for: .normal)
+        archiveButton.titleLabel?.textColor = .blue
+        archiveButton.tintColor = .black
+        return archiveButton
+    }()
     private let userCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -21,14 +28,12 @@ class SearchViewController: UIViewController {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(UserCVCell.self, forCellWithReuseIdentifier: UserCVCell.identifier)
-        cv.backgroundColor = .systemPink
         return cv
     }()
     private let postTableView: UITableView = UITableView()
-
+//MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         configure()
         Webservice.shared.fetchingUserData { apiData in
             self.users = apiData
@@ -42,31 +47,29 @@ class SearchViewController: UIViewController {
         postTableView.frame = CGRect(x: 10, y: 300, width: userCollectionView.frame.width, height: 465)
     }
     func configure() {
+        view.backgroundColor = .white
         view.addSubview(labelTitle3)
         view.addSubview(userCollectionView)
         view.addSubview(postTableView)
-        view.backgroundColor = .cyan
         makeStoryLabel()
         makeUserCollectionView()
-//        postTableView.frame = view.bounds
+        setupTableView()
+        setupBarItem()
+    }
+    func setupTableView(){
         postTableView.register(PostTVCell.self, forCellReuseIdentifier: PostTVCell.identifier)
         postTableView.delegate = self
         postTableView.dataSource = self
-
-        
-        makeTableView()
-//        setupTableView()
     }
-    func setupTableView(){
-
-//        postTableView.separatorColor = .brown
+    func setupBarItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .done, target: nil, action: nil)
     }
 }
+//MARK: - Extensions
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return users.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cellUser = collectionView.dequeueReusableCell(withReuseIdentifier: UserCVCell.identifier, for: indexPath) as! UserCVCell
             if users.count > 0 {
@@ -86,6 +89,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             make.height.greaterThanOrEqualTo(10)
         }
         labelTitle3.text = "Stories"
+        labelTitle3.font = .boldSystemFont(ofSize: 16)
+    }
+    private func makeArchiveButton() {
+        archiveButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.right.equalTo(view).offset(150)
+            make.left.equalTo(view).offset(-150)
+            make.height.greaterThanOrEqualTo(50)
+        }
     }
     private func makeUserCollectionView() {
         userCollectionView.delegate = self
@@ -96,19 +108,11 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             make.height.greaterThanOrEqualTo(120)
         }
     }
-    private func makeTableView() {
-//        postTableView.backgroundColor = .blue
-//        postTableView.snp.makeConstraints { make in
-//            make.top.equalTo(userCollectionView.snp.bottom).offset(-20)
-//            make.left.right.equalTo(labelTitle3)
-//        }
-    }
 }
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let postCell = tableView.dequeueReusableCell(withIdentifier: PostTVCell.identifier, for: indexPath) as! PostTVCell
         let userData = users[indexPath.row]
@@ -121,14 +125,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         Webservice.shared.fetchImages(with: userData.postImage) { data in
             postCell.postImageView.image = UIImage(data: data)
         }
-//        postCell.heartButton.image = UIImage(systemName: "heart")
-//        postCell.commentButton.image = UIImage(systemName: "message")
-//        postCell.shareButton.setImage(UIImage(systemName: "message"))
+        postCell.heartLabel.text = String(describing: userData.likeCount!)
+        postCell.commentLabel.text = String(describing: userData.commentCount!)
         return postCell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450//Choose your custom row height
+        return 460
     }
-    
-    
 }

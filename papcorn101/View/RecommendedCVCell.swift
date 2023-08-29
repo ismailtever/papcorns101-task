@@ -13,19 +13,16 @@ class RecommendedCVCell: UICollectionViewCell {
     var movies = [MovieInfo]()
     
     let movieTime: UILabel = UILabel()
-
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .yellow
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 25
         return imageView
     }()
     let movieLabel: UILabel = {
         let movieLabel = UILabel()
-        movieLabel.backgroundColor = .green
         movieLabel.textAlignment = .left
         movieLabel.font = UIFont.boldSystemFont(ofSize: 16)
         return movieLabel
@@ -34,7 +31,6 @@ class RecommendedCVCell: UICollectionViewCell {
         let movieType = UILabel()
         movieType.contentMode = .scaleAspectFit
         movieType.font = UIFont.systemFont(ofSize: 15)
-        movieType.backgroundColor = .cyan
         movieType.textAlignment = .left
         return movieType
     }()
@@ -42,29 +38,23 @@ class RecommendedCVCell: UICollectionViewCell {
         let movieYear = UILabel()
         movieYear.contentMode = .scaleAspectFit
         movieYear.font = UIFont.systemFont(ofSize: 15)
-        movieYear.backgroundColor = .systemBlue
         movieYear.textAlignment = .left
         return movieYear
     }()
-    
     override init(frame: CGRect) {
         super .init(frame: frame)
-        contentView.backgroundColor = .brown
         contentView.addSubview(imageView)
         contentView.addSubview(movieLabel)
         contentView.addSubview(movieType)
         contentView.addSubview(movieYear)
         contentView.clipsToBounds = true
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = CGRect(x: 0, y:-30, width: 150, height: 250)
-        
         imageView.frame = CGRect(x: 5,
                                  y: 0,
                                  width: contentView.frame.size.width-10,

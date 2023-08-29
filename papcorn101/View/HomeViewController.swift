@@ -12,7 +12,7 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     var movies = [MovieInfo]()
-
+//MARK: - Properties
     private let labelTitle1: UILabel = UILabel()
     private let labelTitle2: UILabel = UILabel()
     private let recommendedViewButton: UIButton = UIButton()
@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
         cv2.register(PopularCVCell.self, forCellWithReuseIdentifier: PopularCVCell.identifier)
         return cv2
     }()
+//MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -41,12 +42,9 @@ class HomeViewController: UIViewController {
             DispatchQueue.main.async {
                 self.recommendedCollectionView.reloadData()
                 self.popularCollectionView.reloadData()
-
             }
         }
-        
     }
-
     func configure() {
         view.addSubview(labelTitle1)
         view.addSubview(recommendedCollectionView)
@@ -54,24 +52,20 @@ class HomeViewController: UIViewController {
         view.addSubview(popularCollectionView)
         view.backgroundColor = .white
 
-        
         makeRecommendedLabel()
         makeRecommendedMovieCollectionView()
         makePopularLabel()
         makePopularMovieCollectionView()
     }
-
 }
+//MARK: - Extensions
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/2.5, height: collectionView.frame.width/2)
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.recommendedCollectionView {
             let cellA = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedCVCell.identifier, for: indexPath) as! RecommendedCVCell
@@ -101,7 +95,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cellB
         }
     }
-    
     private func makeRecommendedLabel() {
         labelTitle1.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
@@ -110,6 +103,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             make.height.greaterThanOrEqualTo(10)
         }
         labelTitle1.text = "Recomended For You"
+        labelTitle1.font = .boldSystemFont(ofSize: 16)
     }
     private func makePopularLabel() {
         labelTitle2.snp.makeConstraints { make in
@@ -119,13 +113,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             make.height.greaterThanOrEqualTo(10)
         }
         labelTitle2.text = "Popular"
-
+        labelTitle2.font = .boldSystemFont(ofSize: 16)
     }
-
     private func makeRecommendedMovieCollectionView() {
         recommendedCollectionView.delegate = self
         recommendedCollectionView.dataSource = self
-        recommendedCollectionView.backgroundColor = .gray
         recommendedCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle1.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle1)
@@ -135,12 +127,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     private func makePopularMovieCollectionView() {
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
-        popularCollectionView.backgroundColor = .systemYellow
         popularCollectionView.snp.makeConstraints { make in
             make.top.equalTo(labelTitle2.snp.bottom).offset(5)
             make.left.right.equalTo(labelTitle2)
             make.height.greaterThanOrEqualTo(250)
-
         }
     }
 }

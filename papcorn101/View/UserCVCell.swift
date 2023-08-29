@@ -15,22 +15,18 @@ class UserCVCell: UICollectionViewCell {
         let userImageView = UIImageView()
         userImageView.image = UIImage(systemName: "photo")
         userImageView.contentMode = .scaleAspectFill
-        userImageView.backgroundColor = .yellow
         userImageView.clipsToBounds = true
         userImageView.layer.masksToBounds = true
-        
         userImageView.layer.borderWidth = 2
         userImageView.layer.borderColor = UIColor.link.cgColor
         return userImageView
     }()
     let userLabel: UILabel = {
         let userLabel = UILabel()
-         userLabel.backgroundColor = .green
          userLabel.textAlignment = .center
         userLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         return userLabel
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(userImageView)
@@ -47,7 +43,6 @@ class UserCVCell: UICollectionViewCell {
                                  height: contentView.frame.size.height-100)
         userImageView.layer.cornerRadius = userImageView.frame.size.width/2
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
